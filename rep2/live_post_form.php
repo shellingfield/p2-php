@@ -127,7 +127,7 @@ if ((!$_conf['ktai'] && $_conf['expack.editor.savedraft']) ||
 EOP;
 }
 // +live 書込規制用タイマー
-if ($_GET['w_reg'] && $_conf['live.write_regulation']) {
+if (array_key_exists('w_reg', $_GET) && $_GET['w_reg'] && $_conf['live.write_regulation']) {
     $load_control = "cd_on()";
     if ($_conf['live.write_regulation'] == 3) {
         $count_down_second = "31";

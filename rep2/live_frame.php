@@ -31,7 +31,7 @@ $live_read = "live_read.php";
 $live_q = "&amp;live=1";
 
 $offline_q = '';
-if ($_GET['offline']) {
+if (array_key_exists('offline', $_GET) && $_GET['offline']) {
 	$offline_l = isset($_GET['offline']) ? $_GET['offline'] : '';
 	$offline_q = "&amp;offline=" . $offline_l;
 	$live_read = "read.php";
@@ -39,7 +39,7 @@ if ($_GET['offline']) {
 }
 
 $word_q = '';
-if ($_GET['word']) {
+if (array_key_exists('word', $_GET) && $_GET['word']) {
 	$word_l = isset($_GET['word']) ? $_GET['word'] : '';
 	$method_l = isset($_GET['method']) ? $_GET['method'] : '';
 	$word_q = "&amp;word=" . $word_l . "&amp;method=" . $method_l;

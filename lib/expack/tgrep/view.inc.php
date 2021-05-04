@@ -67,10 +67,10 @@
     <td class="toolbar-filter">
         <form id="searchForm" name="searchForm" action="<?php echo $htm['php_self']; ?>" method="get" accept-charset="<?php echo $_conf['accept_charset']; ?>">
         <input id="Q" name="Q" <?php echo $htm['search_attr']; ?> />
-        <input type="hidden" name="maxResult" value="<?php echo $_GET['maxResult']; ?>">
-        <input type="hidden" name="AndOr" value="<?php echo $_GET['AndOr']; ?>">
-        <input type="hidden" name="Sort" value="<?php echo $_GET['Sort']; ?>">
-        <input type="hidden" name="924" value="<?php echo $_GET['924']; ?>">
+        <input type="hidden" name="maxResult" value="<?php echo array_key_exists('maxResult', $_GET)? $_GET['maxResult']:''; ?>">
+        <input type="hidden" name="AndOr" value="<?php echo array_key_exists('AndOr', $_GET)? $_GET['AndOr']:''; ?>">
+        <input type="hidden" name="Sort" value="<?php echo array_key_exists('Sort', $_GET)? $_GET['Sort']:''; ?>">
+        <input type="hidden" name="924" value="<?php echo array_key_exists('924', $_GET)? $_GET['924']:''; ?>">
         <input type="submit" value="ŒŸõ" />
         <?php echo $_conf['detect_hint_input_xht'], $_conf['k_input_ht']; ?>
         </form>

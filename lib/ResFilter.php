@@ -165,15 +165,11 @@ class ResFilter
      */
     static public function configure(array $params)
     {
-        $level = error_reporting(E_ALL & ~E_NOTICE);
-
-        $word    = $params['word'];
-        $field   = $params['field'];
-        $method  = $params['method'];
-        $match   = $params['match'];
-        $include = $params['include'];
-
-        error_reporting($level);
+        $word    = array_key_exists('word', $params) ? $params['word'] : '';
+        $field   = array_key_exists('word', $params) ? $params['word'] : '';
+        $method  = array_key_exists('method', $params) ? $params['method'] : '';
+        $match   = array_key_exists('match', $params) ? $params['match'] : '';
+        $include = array_key_exists('include', $params) ? $params['include'] : '';
 
         self::$_instance = new ResFilter($word, $field, $method, $match, $include);
 

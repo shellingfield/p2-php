@@ -279,6 +279,7 @@ EOP;
 // {{{ ‚±‚±‚ÉƒŒƒX
 
 $htm['orig_msg'] = '';
+$q_resnum = null;
 if ((basename($_SERVER['SCRIPT_NAME']) == 'post_form.php' || !empty($_GET['inyou'])) && !empty($_GET['resnum'])) {
     $q_resnum = $_GET['resnum'];
     $hd['MESSAGE'] = "&gt;&gt;" . $q_resnum . "\r\n";
@@ -332,10 +333,10 @@ if (!$_conf['ktai'] || $_conf['iphone']) {
         $_st->setSettingArray();
 
         // –¼–³‚µ‚ªßŒŠ
-        $confirmNanashi = ( (strpos($_st->setting_array['BBS_NONAME_NAME'], "fusianasan") !== false));
+        $confirmNanashi = array_key_exists("BBS_NONAME_NAME", $_st->setting_array) && str_contains($_st->setting_array['BBS_NONAME_NAME'], "fusianasan");
 
         // –¼–³‚µ‚Å‘‚¯‚È‚¢
-        $blockNanashi = ($_st->setting_array['BBS_NANASHI_CHECK'] == '1' || $_st->setting_array['NANASHI_CHECK'] == '1');
+        $blockNanashi = ((array_key_exists('BBS_NANASHI_CHECK', $_st->setting_array) && $_st->setting_array['BBS_NANASHI_CHECK'] == '1') || (array_key_exists('NANASHI_CHECK', $_st->setting_array) && $_st->setting_array['NANASHI_CHECK'] == '1'));
 
         unset($_st);
 

@@ -44,6 +44,7 @@ EOP;
 }
 
 // IC2リンク、件数
+$htm['ic2navi'] = '';
 if ($_conf['expack.ic2.enabled'] && $_conf['expack.ic2.thread_imagelink']) {
     $htm['ic2navi'] = '<a href="iv2.php?field=memo&amp;keyword='
         . rawurlencode($aThread->ttitle)
@@ -62,7 +63,7 @@ if ($aThread->rescount or (!empty($_GET['one']) && !$aThread->diedat)) { // and 
 EOP;
         } else {
 			// +live リンク切替
-			if ($_GET['live']) {
+			if (array_key_exists('live', $_GET) && $_GET['live']) {
 				$htm['dores'] = <<<LIVE
 				<a href="live_post_form.php?{$host_bbs_key_q}{$ttitle_en_q}" target='livepost'>{$dores_st}</a>
 LIVE;
@@ -180,7 +181,7 @@ if ($_conf['expack.ic2.enabled']) {
 }
  
 // +live 表示切替スクリプト
-if ($_GET['live']) {
+if (array_key_exists('live', $_GET) && $_GET['live']) {
 	echo "";
 } else {
 	echo <<<LIVE

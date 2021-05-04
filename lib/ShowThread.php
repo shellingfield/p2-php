@@ -1119,7 +1119,7 @@ abstract class ShowThread
      */
     public function transLinkDo(array $s)
     {
-        if ($s['url']) {
+        if (array_key_exists('url', $_GET) && $s['url']) {
             // sha1で囲んだ方が多少速くなるが低確率で衝突する
             $key = sha1(serialize($s));
             // キャッシュしてない場合
@@ -1180,8 +1180,8 @@ abstract class ShowThread
             }
             $url = preg_replace('/^t?(tps?)$/', 'ht$1', $s[9]) . '://' . $s[10];
             $str = $s['url'];
-            $following = $s[11];
-            if (strlen($following) > 0) {
+            $following = array_key_exists(11, $s) ? $s[11] : '';
+            if ($following !== '') {
                 // ウィキペディア日本語版のURLで、SJISの2バイト文字の上位バイト
                 // (0x81-0x9F,0xE0-0xEF)が続くとき
                 if (P2HostMgr::isUrlWikipediaJa($url)) {
@@ -1653,7 +1653,7 @@ abstract class ShowThread
 
            // NGあぼーんチェック
             if (($id = $this->thread->ids[$num + 1]) !== null) {
-                $date_id = str_replace($this->thread->idp[$num] . $id, 'ID:' . $id, $date_id);
+                $date_id = str_replace($this->thread->idp[$num + 1] . $id, 'ID:' . $id, $date_id);
             }
             $ng_type = $this->_ngAbornCheck($num + 1, strip_tags($name), $mail, $date_id, $id, $msg);
             if ($ng_type == self::ABORN) {

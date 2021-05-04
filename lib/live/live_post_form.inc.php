@@ -3,6 +3,9 @@
  *  rep2 - ‘‚«‚İƒtƒH[ƒ€
  */
 
+$htm['kaiko_on_js_fmt'] = '';
+$htm['kaiko_on_js'] = '';
+
 if (!isset($popup)) {
     $popup = 0;
 }
@@ -52,6 +55,8 @@ if ($_conf['wiki.samba_timer']) {
     require_once P2_LIB_DIR . '/wiki/Samba.php';
     $samba = new Samba();
     $htm['samba'] .= $samba->createTimer($samba->getSamba($host, $bbs));
+} else {
+    $htm['samba'] = '';
 }
 
 // ‰º‘‚«•Û‘¶
