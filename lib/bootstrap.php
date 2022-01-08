@@ -147,9 +147,9 @@ if (!empty($_GET) || !empty($_POST)) {
         $request_encoding = null;
     }
 
-    // UTF-8Ç»ÇÁShift_JISÇ…ïœä∑
-    if ($request_encoding === 'UTF-8') {
-        mb_convert_variables('SJIS-win', 'UTF-8', $_GET, $_POST);
+    // Shift_JISÇ≈Ç»ÇØÇÍÇŒïœä∑
+    if ($request_encoding !== 'SJIS-win') {
+        mb_convert_variables('SJIS-win', 'UTF-8,CP932', $_GET, $_POST);
     }
 
     // $_REQUEST Ççƒç\ê¨
