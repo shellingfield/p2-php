@@ -1,4 +1,4 @@
-﻿# rep2 expack 全部入り by （´・ω・） ｽ
+﻿# rep2 expack 全部入り for PHP 8.x by （´・ω・） ｽ
 
 * rep2-expack https://github.com/rsky/p2-php
 * rep2-expack +live https://github.com/pluslive/p2-php
@@ -8,7 +8,7 @@
 
 上記やスレに上げられた修正を取り込んで全部入りを目指す闇鍋バージョンです。
 
-このリポジトリにはrep2をPHP 8.xで動かすためのパッチが含まれています。
+**このリポジトリにはrep2をPHP 8.xで動かすためのパッチが含まれています。**
 
 - [スクリーンショット](https://open774.github.io/p2-php/screenshots.html)
 - [Wiki](https://github.com/open774/p2-php/wiki)
@@ -49,8 +49,9 @@ cd p2-php
 ⚠️ **PEARサポートが廃止されたComposer 2.xでは動作しません** ⚠️
 
 ```shell
-curl -O https://getcomposer.org/download/1.10.19/composer.phar
-php -d detect_unicode=0 composer.phar install
+curl -O https://getcomposer.org/download/1.10.25/composer.phar
+chmod +x composer.phar
+./composer.phar install
 ```
 
 3. Webサーバが書き込めるようにディレクトリのアクセス権をセット  
