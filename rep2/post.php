@@ -415,10 +415,21 @@ function postIt($host, $bbs, $key, $post)
         $req = P2Commun::createHTTPRequest ($bbs_cgi_url,HTTP_Request2::METHOD_POST);
 
         // ヘッダ
-        if (P2HostMgr::isHost2chs($host) && ! P2HostMgr::isHostBbsPink($host) && $_conf['2ch_ssl.post']) {
+        $bypass_headers = ['Cache-Control', 'Sec-Ch-Ua', 'Sec-Ch-Ua-Mobile', 'Upgrade-Insecure-Requests', 'User-Agent', 'Accept', 'Sec-Fetch-Site', 'Sec-Fetch-Mode', 'Sec-Fetch-User', 'Sec-Fetch-Dest', 'Accept-Encoding', 'Accept-Language'];
+
+        foreach (getallheaders() as $name => $value) {
+            if (!in_array($name, $bypass_headers, true)) {
+                continue;
+            }
+            $req->setHeader($name, $value);
+        }
+
+        if (P2HostMgr::isHost2chs($host) && !P2HostMgr::isHostBbsPink($host) && $_conf['2ch_ssl.post']) {
             $req->setHeader('Referer', "https://{$host}/{$bbs}/{$key}/");
+            $req->setHeader("Origin", "https://{$host}/{$bbs}/{$key}/");
         } else {
             $req->setHeader('Referer', "http://{$host}/{$bbs}/{$key}/");
+            $req->setHeader("Origin", "http://{$host}/{$bbs}/{$key}/");
         }
 
         // クッキー
