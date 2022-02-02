@@ -25,7 +25,7 @@
     }
   ],
   "require": {
-    "php": ">=5.5",
+    "php": ">7",
     "ext-curl": "*",
     "ext-dom": "*",
     "ext-json": "*",
@@ -65,5 +65,8 @@
     "ext-pdo_mysql": "Needed to use MySQL in IC2",
     "ext-pdo_pgsql": "Needed to use PostgreSQL in IC2",
     "ext-pdo_sqlite": "Needed to use SQLite in IC2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
   }
 }
