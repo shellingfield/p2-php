@@ -585,7 +585,7 @@ class ImageCache2_Thumbnailer
             }
         }
         $icdb = new ImageCache2_DataObject_Images();
-        $icdb->select(sprintf('MAX(%s) + 1 as id', $icdb->quoteIdentifier('id')));
+        $icdb->select(sprintf('COALESCE(MAX(%s), 0) + 1 as id', $icdb->quoteIdentifier('id')));
         if ($icdb->find(true)) {
             $nextid = $icdb->id;
         } else {
