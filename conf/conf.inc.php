@@ -207,6 +207,11 @@ function p2_init()
     // 管理者用設定を読み込み
     include P2_CONFIG_DIR . '/conf_admin.inc.php';
 
+    // include local var to override, if exist
+    if ( P2_CONFIG_DIR . '/conf_admin.inc.local.php' ) {
+      include P2_CONFIG_DIR . '/conf_admin.inc.local.php';
+    }
+
     // ディレクトリの絶対パス化
     $_conf['data_dir'] = p2_realpath($_conf['data_dir']);
     $_conf['dat_dir']  = p2_realpath($_conf['dat_dir']);
